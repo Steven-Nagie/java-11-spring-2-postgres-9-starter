@@ -1,8 +1,6 @@
-# Multi Module Spring Docker
+# Tinder For Broccoli Main App
 ----
-This project is a practice project, utilizing docker-compose and Dockerfile to build a maven/Spring-boot project. 
-
-The main objective is to manage the entire build for a complex maven project in a single command, `docker-compose up`.
+This is the main application for Tinder For Broccoli
 
 __Usage__
 
