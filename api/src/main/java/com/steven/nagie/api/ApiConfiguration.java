@@ -1,3 +1,4 @@
+// TODO: rename the package and the project once this project has an actual official name
 package com.steven.nagie.api;
 
 import com.steven.nagie.domain.DomainConfiguration;
