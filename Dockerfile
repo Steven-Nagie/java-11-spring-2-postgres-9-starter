@@ -1,4 +1,4 @@
-FROM maven:3.6.3-jdk-11-alpine AS MAVEN_TOOL_CHAIN
+FROM maven:3.6.3-jdk-11 AS MAVEN_TOOL_CHAIN
 COPY pom.xml /tmp/
 COPY api /tmp/api/
 COPY domain /tmp/domain/
