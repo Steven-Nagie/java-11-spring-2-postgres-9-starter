@@ -1,4 +1,4 @@
-package com.steven.nagie.api;
+package com.steven.nagie.bootstrap;
 
 import com.steven.nagie.api.impl.TestDockerEndpoint;
 import org.testng.annotations.Test;
@@ -13,7 +13,7 @@ import static org.testng.Assert.assertEquals;
 
 @ContextConfiguration(classes = ITConfig.class)
 @WebAppConfiguration
-public class MultiModuleTestIT extends AbstractTestNGSpringContextTests {
+public class BroccoliTinderTestIt extends AbstractTestNGSpringContextTests {
   
   @Autowired
   private TestDockerEndpoint testDockerEndpoint;
