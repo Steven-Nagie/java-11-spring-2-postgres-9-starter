@@ -1,5 +1,8 @@
 version: '3'
 services:
+  postgresdb:
+    image: postgres:9.5.20-alpine
+    restart: always
   api:
     build: ./
     container_name: broccoli-tinder
