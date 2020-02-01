@@ -2,6 +2,7 @@ package com.steven.nagie.domain;
 
 import org.flywaydb.core.Flyway;
 import org.hibernate.SessionFactory;
+import org.postgresql.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy;
@@ -63,9 +64,11 @@ public class DomainConfiguration {
   public DataSource dataSource() {
     // TODO: Better way to configure?
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    System.out.println(environment.getRequiredProperty("jdbc.url"));
     dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driver"));
-    dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+    StringBuilder jdbcUrl = new StringBuilder("jdbc:postgresql://" + environment.getRequiredProperty("jdbc.host") + ":");
+    jdbcUrl.append(environment.getRequiredProperty("jdbc.port"));
+    jdbcUrl.append("/" + environment.getRequiredProperty("jdbc.databaseName"));
+    dataSource.setUrl(jdbcUrl.toString());
     dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
     dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
     return dataSource;
