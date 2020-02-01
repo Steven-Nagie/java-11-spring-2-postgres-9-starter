@@ -1,6 +1,7 @@
 package com.steven.nagie.bootstrap;
 
-import com.steven.nagie.api.impl.TestDockerEndpoint;
+import com.steven.nagie.api.impl.UserEndpoint;
+import org.springframework.test.context.TestPropertySource;
 import org.testng.annotations.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,15 +13,16 @@ import java.math.BigDecimal;
 import static org.testng.Assert.assertEquals;
 
 @ContextConfiguration(classes = ITConfig.class)
+@TestPropertySource("classpath:test-application.properties")
 @WebAppConfiguration
 public class BroccoliTinderTestIt extends AbstractTestNGSpringContextTests {
   
   @Autowired
-  private TestDockerEndpoint testDockerEndpoint;
+  private UserEndpoint userEndpoint;
   
   @Test
   public void testMultiplicationEndpoint() {
-    BigDecimal response = testDockerEndpoint.multiplyByTen(BigDecimal.TEN);
+    BigDecimal response = userEndpoint.multiplyByTen(BigDecimal.TEN);
     assertEquals(response, new BigDecimal("100"));
   }
 }
