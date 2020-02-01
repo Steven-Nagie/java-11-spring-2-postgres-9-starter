@@ -1,5 +1,6 @@
 package com.steven.nagie.domain;
 
+import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
@@ -13,11 +14,11 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-//@EnableAutoConfiguration
 @ComponentScan(basePackages = {
     "com.steven.nagie.domain"
 })
@@ -25,7 +26,7 @@ import java.util.Properties;
 public class DomainConfiguration {
   
   private String[] PACKAGES_TO_SCAN = {};
-
+  
   @Autowired
   private Environment environment;
   
@@ -79,11 +80,15 @@ public class DomainConfiguration {
     return properties;
   }
   
-  // TODO
-  //  @PostConstruct
-//  public void migrateFlyway() {
-//    Flyway.configure()
-//        .dataSource(dataSource)
-//        .locations()
-//  }
+  @PostConstruct
+  public void migrateFlyway() {
+    Flyway.configure()
+        .dataSource(dataSource())
+        .locations("classpath:db/migration/security")
+        .schemas("security")
+        .table("security_version")
+        .baselineOnMigrate(true)
+        .load()
+        .migrate();
+  }
 }

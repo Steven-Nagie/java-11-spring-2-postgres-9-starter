@@ -1,8 +1,8 @@
-CREATE SCHEMA IF NOT EXISTS broccoli_tinder;
+CREATE SCHEMA IF NOT EXISTS security;
 
-SET SCHEMA 'broccoli_tinder';
+SET SCHEMA 'security';
 
-CREATE TABLE users(
+CREATE TABLE IF NOT EXISTS users(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     username TEXT NOT NULL
 );
