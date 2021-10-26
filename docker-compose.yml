@@ -5,6 +5,6 @@ services:
     restart: always
   api:
     build: ./
-    container_name: broccoli-tinder
+    container_name: path-interview
     ports:
       - "8080:8080"

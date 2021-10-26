@@ -6,9 +6,9 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 
 @Component
-public class UserServiceImpl implements UserService {
+public class GameServiceImpl implements UserService {
   @Override
   public BigDecimal multiplyByTen(BigDecimal startNumber) {
-    return startNumber.multiply(BigDecimal.TEN);
+    return null;
   }
 }

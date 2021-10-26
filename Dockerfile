@@ -6,7 +6,7 @@ WORKDIR /tmp/
 RUN mvn clean install -Pdocker
 
 FROM adoptopenjdk/openjdk11:alpine-slim
-COPY --from=MAVEN_TOOL_CHAIN /tmp/api/target/broccoli-tinder.jar app.jar
+COPY --from=MAVEN_TOOL_CHAIN /tmp/api/target/path-interview.jar app.jar
 
 RUN sh -c 'touch /app.jar'
 

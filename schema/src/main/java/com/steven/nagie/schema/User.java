@@ -3,7 +3,7 @@ package com.steven.nagie.schema;
 import javax.persistence.*;
 
 @Entity
-@Table(schema = "broccoli_tinder")
+@Table(schema = "security")
 public class User {
   
   private Long id;
